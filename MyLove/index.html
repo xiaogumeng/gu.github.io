@@ -1,0 +1,58 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>MYLOVE</title>
+
+    <link href="/css/default.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="/js/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="/js/garden.js"></script>
+    <script type="text/javascript" src="/js/functions.js"></script>
+
+</head>
+
+<body>
+<img src="/img/images.jpg" style="width:100%;height: 100%;position: absolute">
+<div id="mainDiv" style="position:absolute;width:100%;text-align: center;">
+    <div id="content">
+        <div id="loveHeart" style="margin-left: 222px;">
+            <canvas id="garden"></canvas>
+            <div id="code" style="position: absolute; top: 70px; left: 420px;">
+                <span class="comments">/**</span><br>
+                <span class="space"><span class="comments">*2014—11-11*</span><br>
+                <span class="space"><span class="comments">**/</span><br>
+                Has a girl<br>
+                This girl is very temperament;<br>
+                Love reading;<br>
+                Serious;<br>
+                Beautiful.<br>
+                <span class="comments">AS time goes on.</span><br>
+                The boy can not forgot the girl.<br>
+                <span class="keyword">but</span><br>
+                Graduate soon.<br>
+                <span class="comments">May not have a chance to meet again.</span><br>
+                <span class="comments">Whatever,</span><br>
+                <span class="keyword">you</span> are <span class="keyword">my goddess.</span><br>
+                <span class="comments">Hope you can be happy forever.</span><br>
+                <br>
+                Before the end of college,<br>
+                I just want you to know my heart.<br>
+            </span></span></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var offsetX = $("#loveHeart").width() / 2;
+    var offsetY = $("#loveHeart").height() / 2 - 55;
+
+    setTimeout(function () {
+        startHeartAnimation();
+    }, 5000);
+
+    adjustCodePosition();
+    $("#code").typewriter();
+
+</script>
+</body>
+</html>

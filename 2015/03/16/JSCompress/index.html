@@ -1,0 +1,478 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta name="google-site-verification" content="B9UqgyW5fOL7s86YZ6roZmvPa_jXgPmnvzTRZ6Vk_t8" />
+  <meta charset="UTF-8">
+  <meta name="baidu_union_verify" content="d1952c66cf48912e21c18c7c581f382a">
+  <meta name="360-site-verification" content="67fbcc5a67f4c65c057315b28fa0b2c8" />
+<meta name="google-site-verification" content="2GzxQ0VtXwTSUdmGm6DzcmhTzM_I9QmzCb_pzpMzD88" />
+  
+    <title>JS 压缩字符串和图片 | 萧书语</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="萧书语">
+    
+    <meta name="description" content="1. JS压缩字符串
+摘录
+
+对字符串进行压缩
+
+
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556function Compress(str">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            var _bdId ='2fc4c4720a7a277acd563ab514d07ca8';
+             hm.src = "//hm.baidu.com/hm.js?" + _bdId;
+             var s = document.getElementsByTagName("script")[0]; 
+             s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+     
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="萧书语">萧书语</a></h1>
+				<a class="blog-motto"></a>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+					
+                                            <form class="search" action=http://search.baidu.com/cse/search target="_blank">
+                                            <label>Search</label>
+                                        <input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="搜索"><br>
+					
+					</li>
+				</ul>
+                            </nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/03/16/JSCompress/" title="JS 压缩字符串和图片" itemprop="url">JS 压缩字符串和图片</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://moneyinto.github.io" title="萧书语">萧书语</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2015-03-16T06:57:35.000Z" itemprop="datePublished">3月 16 2015</time>
+    更新日期:<time datetime="2015-03-16T09:03:46.000Z" itemprop="dateModified">3月 16 2015</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-_JS压缩字符串"><span class="toc-number">1.</span> <span class="toc-text">1. JS压缩字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#对字符串进行压缩"><span class="toc-number">1.0.1.</span> <span class="toc-text">对字符串进行压缩</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#对字符串进行解压"><span class="toc-number">1.0.2.</span> <span class="toc-text">对字符串进行解压</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-_JS压缩图片"><span class="toc-number">2.</span> <span class="toc-text">2. JS压缩图片</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#效果展示"><span class="toc-number">2.1.</span> <span class="toc-text">效果展示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代码展示"><span class="toc-number">2.2.</span> <span class="toc-text">代码展示</span></a></li></ol></li></ol>
+		</div>
+		
+		<h3 id="1-_JS压缩字符串">1. JS压缩字符串</h3>
+<p><a href="http://www.cnblogs.com/liyinkan/archive/2011/09/16/2178686.html" target="_blank" rel="external">摘录</a></p>
+<ul>
+<li><h5 id="对字符串进行压缩">对字符串进行压缩</h5>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Compress</span><span class="params">(strNormalString)</span> </span>{</div><div class="line">    <span class="keyword">var</span> strCompressedString = <span class="string">""</span>;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> ht = <span class="keyword">new</span> <span class="built_in">Array</span>();</div><div class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">128</span>; i++) {</div><div class="line">        ht[i] = i;</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="keyword">var</span> used = <span class="number">128</span>;</div><div class="line">    <span class="keyword">var</span> intLeftOver = <span class="number">0</span>;</div><div class="line">    <span class="keyword">var</span> intOutputCode = <span class="number">0</span>;</div><div class="line">    <span class="keyword">var</span> pcode = <span class="number">0</span>;</div><div class="line">    <span class="keyword">var</span> ccode = <span class="number">0</span>;</div><div class="line">    <span class="keyword">var</span> k = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;strNormalString.length; i++) {</div><div class="line">        ccode = strNormalString.charCodeAt(i);</div><div class="line">        k = (pcode &lt;&lt; <span class="number">8</span>) | ccode;</div><div class="line">        <span class="keyword">if</span>(ht[k] != <span class="literal">null</span>) {</div><div class="line">            pcode = ht[k];</div><div class="line">        } <span class="keyword">else</span> {</div><div class="line">            intLeftOver += <span class="number">12</span>;</div><div class="line">            intOutputCode &lt;&lt;= <span class="number">12</span>;</div><div class="line">            intOutputCode |= pcode;</div><div class="line">            pcode = ccode;</div><div class="line">            <span class="keyword">if</span>(intLeftOver &gt;= <span class="number">16</span>) {</div><div class="line">                strCompressedString += <span class="built_in">String</span>.fromCharCode( intOutputCode &gt;&gt; ( intLeftOver - <span class="number">16</span> ) );</div><div class="line">                intOutputCode &= (<span class="built_in">Math</span>.pow(<span class="number">2</span>, (intLeftOver - <span class="number">16</span>)) - <span class="number">1</span>);</div><div class="line">                intLeftOver -= <span class="number">16</span>;</div><div class="line">            }</div><div class="line">            <span class="keyword">if</span>(used &lt; <span class="number">4096</span>) {</div><div class="line">                used ++;</div><div class="line">                ht[k] = used - <span class="number">1</span>;</div><div class="line">            }</div><div class="line">        }</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(pcode != <span class="number">0</span>) {</div><div class="line">        intLeftOver += <span class="number">12</span>;</div><div class="line">        intOutputCode &lt;&lt;= <span class="number">12</span>;</div><div class="line">        intOutputCode |= pcode;</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(intLeftOver &gt;= <span class="number">16</span>) {</div><div class="line">        strCompressedString += <span class="built_in">String</span>.fromCharCode( intOutputCode &gt;&gt; ( intLeftOver - <span class="number">16</span> ) );</div><div class="line">        intOutputCode &= (<span class="built_in">Math</span>.pow(<span class="number">2</span>,(intLeftOver - <span class="number">16</span>)) - <span class="number">1</span>);</div><div class="line">        intLeftOver -= <span class="number">16</span>;</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="keyword">if</span>( intLeftOver &gt; <span class="number">0</span>) {</div><div class="line">        intOutputCode &lt;&lt;= (<span class="number">16</span> - intLeftOver);</div><div class="line">        strCompressedString += <span class="built_in">String</span>.fromCharCode( intOutputCode );</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="keyword">return</span> strCompressedString;</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="对字符串进行解压">对字符串进行解压</h5>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Decompress</span><span class="params">(strCompressedString)</span> </span>{</div><div class="line">    <span class="keyword">var</span> strNormalString = <span class="string">""</span>;</div><div class="line">    <span class="keyword">var</span> ht = <span class="keyword">new</span> <span class="built_in">Array</span>();</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">128</span>; i++) {</div><div class="line">        ht[i] = <span class="built_in">String</span>.fromCharCode(i);</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="keyword">var</span> used = <span class="number">128</span>;</div><div class="line">    <span class="keyword">var</span> intLeftOver = <span class="number">0</span>;</div><div class="line">    <span class="keyword">var</span> intOutputCode = <span class="number">0</span>;</div><div class="line">    <span class="keyword">var</span> ccode = <span class="number">0</span>;</div><div class="line">    <span class="keyword">var</span> pcode = <span class="number">0</span>;</div><div class="line">    <span class="keyword">var</span> key = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;strCompressedString.length; i++) {</div><div class="line">        intLeftOver += <span class="number">16</span>;</div><div class="line">        intOutputCode &lt;&lt;= <span class="number">16</span>;</div><div class="line">        intOutputCode |= strCompressedString.charCodeAt(i);</div><div class="line"></div><div class="line">        <span class="keyword">while</span>(<span class="number">1</span>) {</div><div class="line">            <span class="keyword">if</span>(intLeftOver &gt;= <span class="number">12</span>) {</div><div class="line">                ccode = intOutputCode &gt;&gt; (intLeftOver - <span class="number">12</span>);</div><div class="line">                <span class="keyword">if</span>( <span class="keyword">typeof</span>( key = ht[ccode] ) != <span class="string">"undefined"</span> ) {</div><div class="line">                     strNormalString += key;</div><div class="line">                    <span class="keyword">if</span>(used &gt; <span class="number">128</span>) {</div><div class="line">                        ht[ht.length] = ht[pcode] + key.substr(<span class="number">0</span>, <span class="number">1</span>);</div><div class="line">                    }</div><div class="line">                     pcode = ccode;</div><div class="line">                } <span class="keyword">else</span> {</div><div class="line">                    key = ht[pcode] + ht[pcode].substr(<span class="number">0</span>, <span class="number">1</span>);</div><div class="line">                    strNormalString += key;</div><div class="line">                    ht[ht.length] = ht[pcode] + key.substr(<span class="number">0</span>, <span class="number">1</span>);</div><div class="line">                    pcode = ht.length - <span class="number">1</span>;</div><div class="line">                }</div><div class="line"></div><div class="line">                used ++;</div><div class="line">                intLeftOver -= <span class="number">12</span>;</div><div class="line">                intOutputCode &= (<span class="built_in">Math</span>.pow(<span class="number">2</span>,intLeftOver) - <span class="number">1</span>);</div><div class="line">            } <span class="keyword">else</span> {</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            }</div><div class="line">        }</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> strNormalString;</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p><br></p>
+<h3 id="2-_JS压缩图片">2. JS压缩图片</h3>
+<p><a href="http://www.gbtags.com/gb/share/2991.htm" target="_blank" rel="external">摘录</a></p>
+<h4 id="效果展示"><strong><em>效果展示</em></strong></h4>
+<ul>
+<li><p><a href="http://js-compress-image.coding.io/" target="_blank" rel="external">DEMO路径一</a></p>
+</li>
+<li><p><a href="https://jsfiddle.net/moneyinto/fe7d4wyy/" target="_blank" rel="external">DEMO路径二</a></p>
+</li>
+</ul>
+<h4 id="代码展示"><strong><em>代码展示</em></strong></h4>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div></pre></td><td class="code"><pre><div class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">html</span> <span class="attribute">xmlns</span>=<span class="value">"http://www.w3.org/1999/html"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"UTF-8"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">title</span>&gt;</span>compress<span class="tag">&lt;/<span class="title">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"css/bootstrap.min.css"</span> <span class="attribute">rel</span>=<span class="value">'stylesheet'</span> <span class="attribute">media</span>=<span class="value">"screen"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"css/bootstrap-theme.min.css"</span> <span class="attribute">rel</span>=<span class="value">'stylesheet'</span> <span class="attribute">media</span>=<span class="value">"screen"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">'text/javascript'</span> <span class="attribute">src</span>=<span class="value">'js/jquery-1.9.1.min.js'</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">'text/javascript'</span> <span class="attribute">src</span>=<span class="value">'js/bootstrap.min.js'</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-xs-3"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="title">p</span> <span class="attribute">id</span>=<span class="value">"original_size"</span>&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="title">img</span> <span class="attribute">id</span>=<span class="value">"original_image"</span> <span class="attribute">class</span>=<span class="value">"col-xs-6"</span> <span class="attribute">src</span>=<span class="value">""</span> <span class="attribute">style</span>=<span class="value">"width:600px"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="title">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="title">p</span> <span class="attribute">id</span>=<span class="value">"now_size"</span>&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="title">img</span> <span class="attribute">id</span>=<span class="value">"now_image"</span> <span class="attribute">class</span>=<span class="value">"col-xs-6"</span> <span class="attribute">src</span>=<span class="value">""</span> <span class="attribute">style</span>=<span class="value">"width:600px"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">form</span> <span class="attribute">id</span>=<span class="value">"image_upload"</span> <span class="attribute">method</span>=<span class="value">"post"</span>  <span class="attribute">enctype</span>=<span class="value">"multipart/form-data"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="title">input</span> <span class="attribute">class</span>=<span class="value">"hide"</span> <span class="attribute">type</span>=<span class="value">"file"</span> <span class="attribute">id</span>=<span class="value">"upload_image"</span> <span class="attribute">name</span>=<span class="value">"img"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="title">form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">style</span>=<span class="value">"ime-mode:disabled"</span> <span class="attribute">onkeyup</span>=<span class="value">"return ValidateNumber($(this),value)"</span> <span class="attribute">id</span>=<span class="value">"set_size"</span> <span class="attribute">value</span>=<span class="value">"50"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">id</span>=<span class="value">"choose_box"</span> <span class="attribute">value</span>=<span class="value">"选择本地图片"</span> <span class="attribute">type</span>=<span class="value">"button"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    $(<span class="built_in">window</span>).ready(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{</div><div class="line">        $(<span class="string">'#choose_box'</span>).click(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{</div><div class="line">            $(<span class="string">'#upload_image'</span>).click();</div><div class="line">            $(<span class="string">'#choose_box'</span>).addClass(<span class="string">'hide'</span>);</div><div class="line">            $(<span class="string">'#set_size'</span>).addClass(<span class="string">'hide'</span>)</div><div class="line">        });</div><div class="line"></div><div class="line">        $(<span class="string">'#upload_image'</span>).change(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{</div><div class="line">            readURL(<span class="keyword">this</span>);</div><div class="line">        })</div><div class="line">    });</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">ValidateNumber</span><span class="params">(e, pnumber)</span></span>{</div><div class="line">        <span class="keyword">if</span> (!<span class="regexp">/^\d+$/</span>.test(pnumber)){</div><div class="line">            $(e).val(<span class="regexp">/^\d+/</span>.exec($(e).val()));</div><div class="line">        }</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">readURL</span><span class="params">(input)</span> </span>{</div><div class="line">        <span class="keyword">if</span> (input.files && input.files[<span class="number">0</span>]) {</div><div class="line">            <span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader();</div><div class="line">            reader.onload = <span class="function"><span class="keyword">function</span> <span class="params">(e)</span> </span>{</div><div class="line">                $(<span class="string">'#original_image'</span>).attr(<span class="string">'src'</span>, e.target.result);</div><div class="line">                $(<span class="string">'#original_size'</span>).html(<span class="string">'图片原大小：'</span> + e.target.result.length);</div><div class="line">                <span class="keyword">var</span> i = <span class="built_in">document</span>.getElementById(<span class="string">"now_image"</span>);</div><div class="line">                i.src = event.target.result;</div><div class="line">                <span class="keyword">var</span> quality =  $(<span class="string">'#set_size'</span>).val() || <span class="number">50</span>;</div><div class="line">                i.src = compress(i,quality).src;</div><div class="line">                $(<span class="string">'#now_image'</span>).attr(<span class="string">'src'</span>, i.src);</div><div class="line">                $(<span class="string">'#now_size'</span>).html(<span class="string">'压缩后图片大小：'</span> + i.src.length);</div><div class="line">            };</div><div class="line">            reader.readAsDataURL(input.files[<span class="number">0</span>]);</div><div class="line">        }</div><div class="line">    }</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">compress</span> <span class="params">(source_img_obj, quality, output_format)</span></span>{</div><div class="line">            <span class="keyword">var</span> mime_type = <span class="string">"image/jpeg"</span>;</div><div class="line">            <span class="keyword">if</span>(output_format!=<span class="literal">undefined</span> && output_format==<span class="string">"png"</span>){</div><div class="line">                mime_type = <span class="string">"image/png"</span>;</div><div class="line">            }</div><div class="line">            <span class="keyword">var</span> cvs = <span class="built_in">document</span>.createElement(<span class="string">'canvas'</span>);</div><div class="line">            cvs.width = source_img_obj.naturalWidth;</div><div class="line">            cvs.height = source_img_obj.naturalHeight;</div><div class="line">            <span class="keyword">var</span> ctx = cvs.getContext(<span class="string">"2d"</span>).drawImage(source_img_obj, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">            <span class="keyword">var</span> newImageData = cvs.toDataURL(mime_type, quality/<span class="number">100</span>);</div><div class="line">            <span class="keyword">var</span> result_image_obj = <span class="keyword">new</span> Image();</div><div class="line">            result_image_obj.src = newImageData;</div><div class="line">            <span class="keyword">return</span> result_image_obj;</div><div class="line">        }</div><div class="line"><span class="tag">&lt;/<span class="title">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></div></pre></td></tr></table></figure>
+
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Javascript/">Javascript</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://moneyinto.github.io/2015/03/16/JSCompress/" data-title="JS 压缩字符串和图片 | 萧书语" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/03/23/JQuery-place/" title="JQuery获取元素的位置信息">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  JQuery获取元素的位置信息</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/12/14/Nodemailer/"  title="利用Nodemailer发送邮件">
+ <strong>NEXT:</strong><br/> 
+ <span>利用Nodemailer发送邮件
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="2015/03/16/JSCompress/" data-title="JS 压缩字符串和图片" data-url="http://moneyinto.github.io/2015/03/16/JSCompress/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    var duoshuoQuery = {short_name:"moneyinto"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+                || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-_JS压缩字符串"><span class="toc-number">1.</span> <span class="toc-text">1. JS压缩字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#对字符串进行压缩"><span class="toc-number">1.0.1.</span> <span class="toc-text">对字符串进行压缩</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#对字符串进行解压"><span class="toc-number">1.0.2.</span> <span class="toc-text">对字符串进行解压</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-_JS压缩图片"><span class="toc-number">2.</span> <span class="toc-text">2. JS压缩图片</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#效果展示"><span class="toc-number">2.1.</span> <span class="toc-text">效果展示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代码展示"><span class="toc-number">2.2.</span> <span class="toc-text">代码展示</span></a></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+<div id="authorInfo">
+	
+		<div class="author-logo"></div>		
+	
+	<div class="social-list" class="clearfix">
+		
+		
+		
+		
+		
+	</div>
+</div>
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/JQuery/" title="JQuery">JQuery<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Javascript/" title="Javascript">Javascript<sup>4</sup></a></li>
+		
+			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>2</sup></a></li>
+		
+			<li><a href="/categories/NodeJs/" title="NodeJs">NodeJs<sup>1</sup></a></li>
+		
+			<li><a href="/categories/web前端/" title="web前端">web前端<sup>1</sup></a></li>
+		
+			<li><a href="/categories/随笔/" title="随笔">随笔<sup>2</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+
+  <div class="linkslist">
+    <p class="asidetitle">友情链接</p>
+    <ul>
+        <li><a href="http://hexo.io" target="_blank" title="Hexo">Hexo</a></li>
+        <li><a href="http://moneyinto.iteye.com/" target="_blank">moneyinto's Blog</a></li>
+        <li><a href="http://www.moneyinto.icoc.cc/" target="_blank">追起回忆</a></li>
+        <li><a href="https://github.com/moneyinto/" target="_blank">gitHub</a></li>
+    </ul>
+</div>
+
+
+  <div class="rsspart">
+	<!--<a href="undefined" target="_blank" title="rss">RSS 订阅</a>-->
+</div>
+
+  
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+    
+            <p class="copyright"> © 2015 
+		
+		<a href="http://moneyinto.github.io" target="_blank" title="萧书语">萧书语</a>
+		
+            && Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> && 让我们汇聚一堂，享受美好的时光！
+            </div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"moneyinto"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+<script>
+    
+        var _bdImg = '4';
+    
+    window._bd_share_config={
+        "common":{
+            "bdSnsKey":{
+
+            },
+            "bdText":"",
+            "bdMini":"2",
+            "bdMiniList":[
+                "qzone",
+                "tsina",
+                "weixin",
+                "renren",
+                "tqq",
+                "tieba",
+                "douban",
+                "sqq",
+                "diandian",
+                "huaban",
+                "youdao",
+                "mail",
+                "ty",
+                "fbook",
+                "twi",
+                "linkedin",
+                "copy",
+                "print"
+            ],
+            "bdPic":"",
+            "bdStyle":"0",
+            "bdSize":"16"
+        },
+        "slide":{
+            "type":"slide",
+            "bdImg":_bdImg,
+            "bdPos":"right",
+            "bdTop":"350"
+        },
+        "image":{
+            "viewList":[
+                "weixin",
+                "qzone",
+                "tsina",
+                "renren",
+                "douban",
+                "tqq"
+            ],
+            "viewText":"分享：",
+            "viewSize":"16"
+        },
+        "selectShare":{
+            "bdContainerClass":null,
+            "bdSelectMiniList":[
+                "weixin",
+                "qzone",
+                "tsina",
+                "renren",
+                "douban",
+                "tqq"
+            ]
+        }
+    };
+    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+
+
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'null', 'null');  
+ga('send', 'pageview');
+</script>
+
+
+  </body>
+</html>
+
